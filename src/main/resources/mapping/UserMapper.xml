@@ -29,11 +29,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.banner.boke.web.model.User" >
-    insert into boke_user (id, username, password, 
-      createtime, updatetime, isdel
+    insert into boke_user (username, password,
+      createtime, updatetime
       )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{isdel,jdbcType=INTEGER}
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.banner.boke.web.model.User" >
