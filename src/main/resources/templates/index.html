@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
     <h3>这是springboot访问的第一个html页面</h3>
+    <script type="text/javascript">
+        $(function () {
+            $("#index_login").click(function(){
+                $.ajax({
+                    url:"/login/login.do",
+                    type:"POST",
+                    data:{"username":$("#username").val(),"password":$("#password").val()},
+                    success:function (data) {
+                        if (data.success != null ){
+                            alert(data.success);
+                        } else{
+                            alert(data.error);
+                        }
+                    },
+                    error:function () {
+                        alert("连个ajax都不会写！呵呵呵！");
+                    }
+                });
+            });
+
+        });
+    </script>
+    <form>
+        账号：<input type="text" id="username"/><br/>
+        密码：<input type="password" id="password"/><br/>
+    </form>
+    <button id="index_login">登录</button> <button id="index_register">注册</button>
 </body>
 </html>

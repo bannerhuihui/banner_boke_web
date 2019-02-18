@@ -19,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @ResponseBody
-    @RequestMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/all/{pageNum}/{pageSize}.html", produces = {"application/json;charset=UTF-8"})
     public Object findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize){
         LOGGER.info("进入findAllUser方法！");
         return userService.findAllUser(pageNum,pageSize);

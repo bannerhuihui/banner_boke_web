@@ -18,6 +18,13 @@
     from boke_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <!-- 登录操作 -->
+  <select id="login" resultMap="BaseResultMap" parameterType="com.banner.boke.web.model.User" >
+    select
+    <include refid="Base_Column_List" />
+    from boke_user
+    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR} and isdel = 0
+  </select>
   <!-- 查询操作 -->
   <select id="selectAllUser" resultMap="BaseResultMap">
     select
