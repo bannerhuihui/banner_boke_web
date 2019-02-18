@@ -25,7 +25,6 @@ spring:
         druid:
           driver-class-name:
 
-
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.banner.boke.web.model
@@ -35,4 +34,12 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
+logging:
+    path: '/Users/jackie/workspace/rome/'
+    file: 'springboot.log'
+    pattern:
+       console: '%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n'
+       file: '%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n'
+
 
