@@ -1,5 +1,6 @@
 package com.banner.boke.web.controller;
 
+import com.banner.boke.web.common.utils.Log;
 import com.banner.boke.web.model.User;
 import com.banner.boke.web.service.LoginService;
 import com.banner.boke.web.service.impl.LoginServiceImpl;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/login")
+@Log(value = "aspect test",ignore = true)
 public class LoginController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServiceImpl.class);
@@ -22,12 +25,13 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value = "login.do")
-    public Map<String,String> login(User user){
+    @RequestMapping(value = "login.do",method = RequestMethod.POST)
+
+    public Map<String,String> finduser(User user){
         Map<String,String> map = new HashMap<>();
         if(user!=null){
             if(user.getUsername()!=null && user.getPassword()!=null && !StringUtils.pathEquals("",user.getUsername()) && !StringUtils.pathEquals("",user.getPassword())){
-                user = loginService.login(user);
+                user = loginService.finduser(user);
                 if(user!=null){
                     LOGGER.info("登录成功！"+user.getUsername());
                     map.put("success","登录成功！");

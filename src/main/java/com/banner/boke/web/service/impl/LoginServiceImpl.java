@@ -19,7 +19,7 @@ public class LoginServiceImpl implements LoginService {
     private UserMapper userMapper;
 
     @Override
-    public User login(User user) {
+    public User finduser(User user) {
         List<User> list = userMapper.login(user);
         if(list!=null && list.size()>0){
             LOGGER.info("登录成功！");
